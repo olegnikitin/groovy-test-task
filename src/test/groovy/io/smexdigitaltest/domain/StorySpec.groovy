@@ -11,8 +11,19 @@ class StorySpec extends Specification implements DomainUnitTest<Story> {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    def "validate Story #map with result #expectValue"() {
+        when:
+        def result = new Story(map).validate()
+
+        then:
+        result == expectValue
+
+        where:
+        map                                   | expectValue
+        [storyTitle: ""]                      | false
+        [storyTitle: null]                    | false
+        [characterName: null]                 | false
+        [characterName: ""]                   | false
+        [characterName: "a", storyTitle: "v"] | true
     }
 }

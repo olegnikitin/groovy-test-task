@@ -11,8 +11,18 @@ class StoryPartSpec extends Specification implements DomainUnitTest<StoryPart> {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    def "validate StoryPart #map with result #expectValue"() {
+        when:
+        def result = new StoryPart(map).validate()
+
+        then:
+        result == expectValue
+
+        where:
+        map                                                     | expectValue
+        [content: ""]                                           | false
+        [content: null]                                         | false
+        [type: null]                                            | false
+        [content: "a", type: StoryPart.StoryPartType.BEGINNING] | true
     }
 }
