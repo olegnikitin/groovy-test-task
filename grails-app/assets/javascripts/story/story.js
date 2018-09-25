@@ -1,5 +1,5 @@
 function fetchStories() {
-    $.get(domain + "/stories", function () {
+    $.get(domainName + "/stories", function () {
         console.log("Stories are loading");
     }).done(function (data) {
         console.log("Stories are loaded");
@@ -34,9 +34,19 @@ function storyBody(stories) {
             '            <td>' + story.id + '</td>' +
             '            <td>' + story.storyTitle + '</td>' +
             '            <td>' + story.characterName + '</td>' +
-            '            <td>' + story.selectedParts + '</td>' +
+            '            <td>' + renderSelectedParts(story.selectedParts) + '</td>' +
             '            <td class="centered">Edit | delete</td>' +
             '        </tr>';
+    });
+
+    return result;
+}
+
+function renderSelectedParts(selectedParts) {
+    var result = '';
+
+    selectedParts.forEach(function (part) {
+        result += part.id;//todo: make request for real name with async false
     });
 
     return result;

@@ -1,5 +1,5 @@
 function fetchStoryParts() {
-    $.get(domain + "/storyParts", function () {
+    $.get(domainName + "/storyParts", function () {
         console.log("StoryParts are loading");
     }).done(function (data) {
         console.log("StoryParts are loaded");

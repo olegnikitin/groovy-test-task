@@ -10,7 +10,7 @@
 //= require_tree .
 //= require_self
 
-var domain = env === "PROD" ? "http://grails" : "http://localhost:8080";
+var domainName = "http://localhost:8080";
 
 if (typeof jQuery !== 'undefined') {
     (function ($) {
