@@ -19,11 +19,12 @@ class StorySpec extends Specification implements DomainUnitTest<Story> {
         result == expectValue
 
         where:
-        map                                   | expectValue
-        [storyTitle: ""]                      | false
-        [storyTitle: null]                    | false
-        [characterName: null]                 | false
-        [characterName: ""]                   | false
-        [characterName: "a", storyTitle: "v"] | true
+        map                                                                                                                     | expectValue
+        [storyTitle: ""]                                                                                                        | false
+        [storyTitle: null]                                                                                                      | false
+        [characterName: null]                                                                                                   | false
+        [characterName: ""]                                                                                                     | false
+        [characterName: "a", storyTitle: "v"]                                                                                   | true
+        [characterName: "a", storyTitle: "v", selectedParts: [new StoryPart(content: "ab", type: StoryPart.StoryPartType.END)]] | true
     }
 }
