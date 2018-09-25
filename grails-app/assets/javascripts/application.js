@@ -14,10 +14,6 @@ var domainName = "http://localhost:8080";
 
 if (typeof jQuery !== 'undefined') {
     (function ($) {
-        $("#openCreatePage").on("click", function () {
-            location.hash = "#create";
-        });
-
         if (!location.hash) {
             fetchStories()
         }

@@ -82,6 +82,11 @@ function openEditPage() {
         .append("");
 }
 
-function renderCreateEditPage() {
-    // $("content").
+function renderCreateEditPage(id) {
+    location.hash = "#create";
+    if (id) {
+        console.log("editing" + id);
+    } else {
+        console.log("creating");
+    }
 }

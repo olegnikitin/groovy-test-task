@@ -24,7 +24,7 @@
 
 <body>
 <h1>Stories</h1>
-<button class="btn btn-default" type="submit" id="openCreatePage">Create</button>
+<button class="btn btn-default" type="submit" onclick="renderCreateEditPage()">Create</button>
 <content></content>
 
 <asset:javascript src="application.js"/>
