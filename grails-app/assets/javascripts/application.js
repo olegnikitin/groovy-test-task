@@ -10,12 +10,24 @@
 //= require_tree .
 //= require_self
 
+var domain = env === "PROD" ? "http://grails" : "http://localhost:8080";
+
 if (typeof jQuery !== 'undefined') {
-    (function($) {
-        $(document).ajaxStart(function() {
-            $('#spinner').fadeIn();
-        }).ajaxStop(function() {
-            $('#spinner').fadeOut();
+    (function ($) {
+        $("#openCreatePage").on("click", function () {
+            location.hash = "#create";
         });
+
+        if (!location.hash) {
+            fetchStories()
+        }
+        window.onhashchange = function () {//todo: make the same with reload page
+            if (location.hash === "#create") {
+                console.log("create page opened");
+            } else {
+                console.log("Index page opened");
+                fetchStories();
+            }
+        }
     })(jQuery);
 }
