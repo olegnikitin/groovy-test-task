@@ -10,10 +10,23 @@ function fetchStories() {
     });
 }
 
+function deleteStory(id) {
+    console.log("Story is being deleted");
+    $.ajax({
+        url: domainName + "/stories/" + id,
+        method: "DELETE"
+    }).done(function () {
+        console.log("Story is deleted");
+        fetchStories();
+    }).fail(function () {
+        console.error("Story isn't deleted");
+    });
+}
+
 function createStoriesTable(stories) {
-    // $("content").body("");
-    var result = '<table id="storiesTable">' + storiesHead() + storyBody(stories) + '</table>';
-    $("content").append(result);
+    $("content")
+        .empty()
+        .append('<table id="storiesTable">' + storiesHead() + storyBody(stories) + '</table>');
 }
 
 function storiesHead() {
@@ -26,6 +39,11 @@ function storiesHead() {
         '        </tr>';
 }
 
+function renderEditButtons(id) {
+    return '<button class="btn btn-default" type="submit" onclick="openEditPage(' + id + ')">Edit</button>'
+        + '<button class="btn btn-default" type="submit" onclick="deleteStory(' + id + ')">Delete</button>';
+}
+
 function storyBody(stories) {
     var result = '';
 
@@ -35,7 +53,7 @@ function storyBody(stories) {
             '            <td>' + story.storyTitle + '</td>' +
             '            <td>' + story.characterName + '</td>' +
             '            <td>' + renderSelectedParts(story.selectedParts) + '</td>' +
-            '            <td class="centered">Edit | delete</td>' +
+            '            <td>' + renderEditButtons(story.id) + '</td>' +
             '        </tr>';
     });
 
@@ -50,4 +68,20 @@ function renderSelectedParts(selectedParts) {
     });
 
     return result;
+}
+
+function openCreatePage() {
+    $("content")
+        .empty()
+        .append("");
+}
+
+function openEditPage() {
+    $("content")
+        .empty()
+        .append("");
+}
+
+function renderCreateEditPage() {
+    // $("content").
 }

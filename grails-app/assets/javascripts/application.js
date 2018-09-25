@@ -23,7 +23,10 @@ if (typeof jQuery !== 'undefined') {
         }
         window.onhashchange = function () {//todo: make the same with reload page
             if (location.hash === "#create") {
+                openCreatePage();
                 console.log("create page opened");
+            } else if (location.hash.startsWith("#editStory")) {
+                console.log("edit page opened");
             } else {
                 console.log("Index page opened");
                 fetchStories();
