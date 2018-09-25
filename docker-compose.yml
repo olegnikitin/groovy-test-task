@@ -6,7 +6,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-     - 27017:27017
+     - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: example
 
@@ -15,3 +15,8 @@ services:
     restart: always
     ports:
       - 8085:8080
+
+  grails:
+    image: grails-sample/complete:0.1
+    ports:
+     - 8080:8080

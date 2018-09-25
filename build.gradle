@@ -15,10 +15,19 @@ group "oleg.tech.assessment"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
-apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
+apply plugin: 'application'
+
+jar {
+    baseName = "oleg.tech.assessment"
+    group    = "io.smexdigitaltest"
+    version  = "0.0.1-SNAPSHOT"
+    manifest { attributes "Main-Class": "oleg.tech.assessment.Application" }
+}
+
+mainClassName = "oleg.tech.assessment.Application"
 
 repositories {
     mavenLocal()
