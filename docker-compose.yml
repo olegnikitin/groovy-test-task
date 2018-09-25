@@ -20,10 +20,10 @@ services:
     ports:
       - 8085:8080
 
-#  grails:
-#    image: oleg-tech-assessment/build:0.1
-#    ports:
-#     - 8080:8080
+  grails:
+    image: oleg-tech-assessment/build:0.1
+    ports:
+     - 8080:8080
 
 volumes:
   my-datavolume:
